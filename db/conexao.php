@@ -2,10 +2,11 @@
 
 $servidor = "localhost";
 $usuario = "root";
-$senha = "";
+$senha = "root";
 $banco = "meu_projeto_tarefas";
 
-$conexao = new mysqli($servidor, $usuario, $senha, $banco);
+
+$conexao = new mysqli($servidor, $usuario, $senha, $banco); 
 
 if ($conexao->connect_error) {
     die("Falha na conexão: " . $conexao->connect_error);
