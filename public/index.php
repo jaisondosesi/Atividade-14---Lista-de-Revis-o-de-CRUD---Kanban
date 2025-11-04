@@ -1,14 +1,22 @@
 <?php
 session_start();
-include '../db/conexao.php'; 
+include '../db/conexao.php';
+
+if (!isset($_SESSION['usuario_id'])) {
+    header('Location: login.php');
+    exit;
+}
 
 $tarefas_fazer = [];
 $tarefas_fazendo = [];
 $tarefas_pronto = [];
 
+$usuario_logado_id = (int) $_SESSION['usuario_id'];
+
 $sql = "SELECT tarefas.*, usuarios.nome AS usuario_nome 
         FROM tarefas 
         JOIN usuarios ON tarefas.id_usuario = usuarios.id 
+        WHERE tarefas.id_usuario = $usuario_logado_id
         ORDER BY FIELD(prioridade, 'alta', 'media', 'baixa'), data_cadastro ASC";
 
 $resultado = $conexao->query($sql);
@@ -47,9 +55,10 @@ $conexao->close();
     <header>
         <nav class="menu-principal">
             <ul>
+                <li><strong>Olá, <?php echo htmlspecialchars($_SESSION['usuario_nome']); ?>!</strong></li>
                 <li><a href="index.php">Gerenciar Tarefas</a></li>
-                <li><a href="cadastro-usuario.php">Cadastrar Usuário</a></li>
                 <li><a href="cadastro-tarefa.php">Cadastrar Tarefa</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
