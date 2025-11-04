@@ -1,97 +1,121 @@
-📋 Gerenciador de Tarefas (Kanban)
-Este é um sistema simples de gerenciamento de tarefas (To-Do List) desenvolvido em PHP puro, MySQL e CSS. A aplicação permite o cadastro de usuários e tarefas, e organiza as tarefas em um painel visual no estilo Kanban ("A Fazer", "Fazendo", "Pronto").
+<h1 align="center">📋 Lista de Revisão de CRUD — Kanban</h1>
 
-Este projeto foi desenvolvido como parte de uma atividade de revisão de conceitos de CRUD (Create, Read, Update, Delete).
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-8.1%2B-blue?logo=php&logoColor=white"/>
+  <img src="https://img.shields.io/badge/MySQL-Database-orange?logo=mysql&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CRUD-Create%20Read%20Update%20Delete-brightgreen"/>
+  <img src="https://img.shields.io/badge/Kanban-Board-success?logo=trello&logoColor=white"/>
+  <img src="https://img.shields.io/badge/HTML-CSS-lightgrey?logo=html5&logoColor=white"/>
+</p>
 
-✨ Funcionalidades Principais
-Visualização Kanban: Organize tarefas em três colunas: "A Fazer", "Fazendo" e "Pronto".
+---
 
-👤 Gerenciamento de Usuários: Cadastro de novos usuários.
+## 🧠 **Resumo Executivo**
+Aplicação web estilo **Kanban** desenvolvida em **PHP + MySQL**, com foco em revisar operações **CRUD** (Create, Read, Update, Delete).  
+O sistema organiza tarefas nas colunas **A Fazer**, **Fazendo** e **Pronto**, com interface simples e intuitiva.  
 
-📝 CRUD de Tarefas: Crie, edite e exclua tarefas.
+> 🎯 Objetivo: reforçar conceitos fundamentais de CRUD, manipulação de banco de dados e layout dinâmico.
 
-🔗 Atribuição de Tarefas: Vincule cada tarefa a um usuário específico.
+---
 
-⚡ Atualização Rápida: Mude o status da tarefa diretamente do painel principal.
+## ⚙️ **Tecnologias Utilizadas**
 
-💻 Tecnologias Utilizadas
-Backend: PHP
+| Categoria | Tecnologia |
+|:----------:|:------------|
+| Linguagem | 🧩 PHP (puro) |
+| Banco de Dados | 🐘 MySQL |
+| Frontend | 🎨 HTML + CSS |
+| Servidor | 🌐 Apache (XAMPP/WAMP) |
+| Banco | 💾 `meu_projeto_tarefas` |
 
-Banco de Dados: MySQL
+---
 
-Frontend: HTML5 e CSS3
+## 🚀 **Passo a Passo — Instalação e Execução**
 
-Servidor Local (Requerido): XAMPP, WAMP, MAMP ou similar.
+### 1️⃣ Clonar o repositório
+```bash
+git clone https://github.com/jaisondosesi/Atividade-14---Lista-de-Revis-o-de-CRUD---Kanban.git
 
-📁 Estrutura do Projeto
-A estrutura de pastas está organizada para separar responsabilidades:
+2️⃣ Mover para o diretório do servidor local
+C:\xampp\htdocs\Atividade-14---Lista-de-Revis-o-de-CRUD---Kanban
 
-/ATIVIDADE-14---LISTA-DE-REVIS-O-DE-CRUD---KANBAN/
-│
-├── assets/
-│   └── style.css           # Folha de estilo principal
-│
-├── db/
-│   ├── conexao.php         # Script de conexão com o banco
-│   └── db.sql              # Script SQL para criar o banco e as tabelas
-│
-└── public/
-    ├── index.php             # Painel Kanban (Leitura de tarefas)
-    ├── cadastro-usuario.php  # Formulário de criação de usuários
-    ├── cadastro-tarefa.php   # Formulário de criação/edição de tarefas
-    ├── processa-status.php   # Script (backend) para mudar status
-    └── excluir-tarefa.php    # Script (backend) para excluir tarefa
-🚀 Instruções de Instalação e Execução
-Siga estes passos para rodar o projeto localmente:
+3️⃣ Iniciar os serviços
 
-Clone o Repositório
+Abra o XAMPP Control Panel
 
-Bash
+Inicie Apache e MySQL
 
-git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
-(Ou simplesmente baixe o ZIP)
+4️⃣ Criar o banco de dados
 
-Inicie seu Servidor Local
+Acesse phpMyAdmin
 
-Inicie os serviços Apache e MySQL no seu painel XAMPP (ou similar).
+Vá em Databases → Create
 
-Importe o Banco de Dados
+Crie o banco com o nome:
 
-Abra o phpMyAdmin (ex: http://localhost/phpmyadmin).
+meu_projeto_tarefas
 
-Crie um novo banco de dados chamado exatamente meu_projeto_tarefas.
+Clique em Importar e selecione:
 
-Selecione este banco de dados.
+db/db.sql
 
-Vá até a aba "Importar", clique em "Escolher arquivo" e selecione o arquivo db/db.sql deste repositório.
+5️⃣ Configurar conexão no PHP
 
-Clique em "Executar" no final da página.
+Edite o arquivo db/conexao.php:
 
-Configure a Conexão
-
-Abra o arquivo db/conexao.php no seu editor de código.
-
-IMPORTANTE: Verifique se as credenciais correspondem ao seu MySQL. O código está configurado para:
-
+<?php
 $servidor = "localhost";
+$usuario  = "root";           // seu usuário MySQL
+$senha    = "";               // sua senha MySQL (vazia no XAMPP padrão)
+$banco    = "meu_projeto_tarefas";
+?>
 
-$usuario = "root";
+6️⃣ Acessar a aplicação
 
-$senha = "root"; (No seu caso, ou "" se for o padrão XAMPP)
+Abra no navegador:
 
-$banco = "meu_projeto_tarefas";
+http://localhost/Atividade-14---Lista-de-Revis-o-de-CRUD---Kanban/public/index.php
 
-Acesse a Aplicação
+📦 Estrutura do Projeto
+/Atividade-14---Lista-de-Revis-o-de-CRUD---Kanban
+├─ assets/
+│  └─ style.css              # Estilos visuais do Kanban
+├─ db/
+│  ├─ conexao.php            # Configuração de conexão MySQL
+│  └─ db.sql                 # Script de criação das tabelas
+├─ public/
+│  ├─ index.php              # Página principal (Kanban)
+│  ├─ cadastro-usuario.php   # CRUD de usuários
+│  ├─ cadastro-tarefa.php    # CRUD de tarefas
+│  ├─ processa-status.php    # Atualização de status das tarefas
+│  └─ excluir-tarefa.php     # Exclusão de tarefas
+└─ DER.png                   # Diagrama entidade-relacionamento
 
-Mova a pasta do projeto para o diretório htdocs do seu XAMPP.
+🧩 Fluxo de Uso
+Função	Caminho	Descrição
+➕ Cadastrar Usuário	public/cadastro-usuario.php	Insere novos usuários
+📝 Cadastrar Tarefa	public/cadastro-tarefa.php	Cria tarefas vinculadas a um usuário
+🔄 Mover Status	public/index.php	Atualiza coluna no Kanban
+✏️ Editar Tarefa	public/cadastro-tarefa.php	Edição inline ou via formulário
+❌ Excluir Tarefa	public/excluir-tarefa.php	Remove tarefa do banco
+🧪 Testes & Métricas
 
-Abra o seu navegador e acesse o diretório public/ do projeto.
+✅ Checklist Funcional
 
-Exemplo: http://localhost/ATIVIDADE-14.../public/index.php
+ Criar usuários
 
-🔧 Como Usar
-Cadastre um Usuário: Comece por aceder ao menu "Cadastrar Usuário".
+ Criar tarefas
 
-Cadastre uma Tarefa: Aceda a "Cadastrar Tarefa", escreva a descrição e atribua-a ao usuário que acabou de criar.
+ Mover tarefas entre colunas
 
-Gerencie: Volte ao "Gerenciar Tarefas" (index.php) para ver sua nova tarefa no painel. A partir daqui, você pode movê-la de status, editá-la ou excluí-la.
+ Editar e excluir
+
+ Persistência após reload
+
+📊 Métricas recomendadas
+
+Tempo médio de carregamento (index.php)
+
+Log de erros (error_log)
+
+Status HTTP (Network → DevTools)
